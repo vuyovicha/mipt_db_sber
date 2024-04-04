@@ -1,0 +1,7 @@
+{
+	"name": "Alice",
+  	"age": 25,
+  	"city": "New York",
+  	"occupation": "Engineer",
+  	"hobbies": "reading", "painting", "traveling"
+ }

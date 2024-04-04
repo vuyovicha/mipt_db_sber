@@ -1,0 +1,38 @@
+services:
+  node_first:
+    container_name: node_first
+    image: redis:latest
+    hostname: node_first
+    ports:
+      - 6950:6950
+    command: redis-server --port 6950 --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes
+    networks:
+      - redis-network
+    restart: always
+
+  node_second:
+    container_name: node_second
+    image: redis:latest
+    hostname: node_second
+    ports:
+      - 6951:6951
+    command: redis-server --port 6951 --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes
+    networks:
+      - redis-network
+    restart: always
+
+  node_third:
+    container_name: node_third
+    image: redis:latest
+    hostname: node_third
+    ports:
+      - 6952:6952
+    command: redis-server --port 6952 --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes
+    networks:
+      - redis-network
+    restart: always
+
+networks:
+  redis-network:
+    name: redis-network
+    driver: bridge
